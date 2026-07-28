@@ -1,0 +1,21 @@
+{
+  "name": "pomodoro-timer",
+  "version": "0.0.1",
+  "description": "This is a pomodoro cute app",
+  "keywords": [
+    "electron",
+    "reactjs",
+    "typescript"
+  ],
+  "license": "ISC",
+  "author": "MIT",
+  "type": "commonjs",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "dependencies": {
+    "electron": "^43.2.0"
+  }
+}
