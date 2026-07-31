@@ -17,32 +17,46 @@ body {
 
 .outer-app {
   border-radius: 10px;
-  border-color: rgb(58, 35, 141);
+  border-color: rgb(63, 167, 82);
   border-style: solid;
-  display: flex;
+  display: grid;
   width: 291px;
   height: 431px;
   justify-content: center;
   align-items: center;
-  background: rgb(106, 88, 149);
+  background-image: url("assets/fundo.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
-.app {
-  border-radius: 20px;
-  border-color: rgb(58, 35, 141);
-  display:grid;
-  width: 251px;
-  height: 391px;
 
-  background: rgb(161, 135, 178);
-  padding: 20px;
-  
-}
 
 .buttons-bellow{
   position: flex;
 
 }
+
+
+
+.timer-font  {
+  font-family: "Bitcount Grid Double", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-size:250%;
+  font-style: normal;
+  color:rgb(26, 117, 41);
+  font-variation-settings:
+    "slnt" 0,
+    "CRSV" 0.5,
+    "ELSH" 0,
+    "ELXP" 0;
+
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
 
 button,
 input,

@@ -3,8 +3,9 @@ const timeButtons = document.getElementById('timeButtons');
 var time = 0;
 var interval = 0;
 var working = false;
+var studyOrBreak = " ";
 
- stopButton.style.display = 'none';
+
 function showTime(timeInSeconds){
 
     var seconds = timeInSeconds%60;
@@ -17,29 +18,72 @@ function showTime(timeInSeconds){
 }
 
 function timer(){
-    selectedTime = time -1;
+    
+    if(timeStudy > 0){
+    selectedTime = timeStudy -1;
     showTime(selectedTime);
-    time = selectedTime -1;
+    timeStudy = selectedTime -1;
+    }else if(timeStudy == 0){
+        return null;
+    }
+    
+        
 
 }
+
+function disappear(item){
+    item.style.display = 'none';
+}
+
+function show(item){
+    item.style.display = 'block';
+}
+disappear(stopButton);
+disappear(resetButton);
+disappear(continueButton);
 
 startButton.onclick = () => {
 
-    timeButtons.style.display = 'none'; // buttons disapear
-    startButton.style.display = 'none';
-    stopButton.style.display = 'block';
-    time = document.getElementById('study').value; //gets main seconds value from dropdown
-    showTime(time);
+    studyOrBreak = "study"
+    disappear(timeButtons);
+    disappear(startButton);
+    show(stopButton);
+    show(resetButton);
+    timeStudy = document.getElementById('study').value;
+    timeBreak = document.getElementById('break').value; //gets main seconds value from dropdown
+    showTime(timeStudy);
     timeInterval = setInterval(timer, 1000);
-;
+
+}
 
 stopButton.onclick = () => {
     clearInterval(timeInterval);
-    stopButton.style.display = 'none';
-    startButton.style.display = 'block';
-    time = document.getElementById('study').value;
-    showTime(time);
+    disappear(stopButton);
+    show(continueButton);
+    
+    
 }
+
+continueButton.onclick = () => {
+    disappear(continueButton);
+    show(stopButton);
+    showTime(timeStudy);
+    timeInterval = setInterval(timer, 1000);
+
+}
+
+resetButton.onclick = () => {
+    document.getElementById('timer').innerHTML = "00:00";
+    clearInterval(timeInterval);
+    show(timeButtons);
+    show(startButton);
+    disappear(resetButton);
+    disappear(continueButton);
+
+}
+
+
+
     
     
 
@@ -61,7 +105,7 @@ stopButton.onclick = () => {
 
 
     
-};
+
 
 
 
