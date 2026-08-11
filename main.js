@@ -2,8 +2,8 @@ const {app, BrowserWindow} = require('electron') //importing electron modules wi
 
 const createWindow = () => {
     const win = new BrowserWindow({
-       width: 292,
-      height: 430,
+         width: 200,
+      height: 300,
       resizable: false,
       maximizable: false,
       fullscreenable: false,
@@ -32,3 +32,4 @@ app.on('window-all-closed', () => {
     app.quit()
   }
 })
+
