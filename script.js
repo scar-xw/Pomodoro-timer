@@ -1,11 +1,14 @@
 const startButton = document.getElementById('startButton');
-const timeButtons = document.getElementById('timeButtons');
-var time = 0;
+const stopButton = document.getElementById('stopButton');
+const resetButton = document.getElementById('resetButton');
+const continueButton = document.getElementById('continueButton');
+const addButton = document.getElementById('moreTimeButton'); // Fixed ID match
+const subButton = document.getElementById('lessTimeButton');
+const timerRing = new Audio("assets/alarmClockSound.mp3");
+var timeStudy = 0
 var interval = 0;
-var working = false;
-var studyOrBreak = " ";
 
-
+//shows time in seconds (300) as timer form 05:00 in element 'timer'
 function showTime(timeInSeconds){
 
     var seconds = timeInSeconds%60;
@@ -17,6 +20,16 @@ function showTime(timeInSeconds){
     
 }
 
+//elements dissapears
+function disappear(item){
+    item.style.display = 'none';
+}
+
+//element shows
+function show(item){
+    item.style.display = 'block';
+}
+
 function timer(){
     
     if(timeStudy > 0){
@@ -24,33 +37,57 @@ function timer(){
     showTime(selectedTime);
     timeStudy = selectedTime -1;
     }else if(timeStudy == 0){
+        showTime(timeStudy);
+        clearInterval(timeInterval);
+        timerRing.play();
         return null;
     }
+
+}
+
+
+function subtract(time){
+    if (time > 0 ){
+        time = time - 300;
+    }
+    return time;
+}
+
+function add(time){
+    if (time < 3600 ){
+        time = time + 300;
+    }
     
-        
-
+    
+     return time;
 }
 
-function disappear(item){
-    item.style.display = 'none';
-}
-
-function show(item){
-    item.style.display = 'block';
-}
 disappear(stopButton);
 disappear(resetButton);
 disappear(continueButton);
 
+
+addButton.addEventListener('click', () =>{
+    timeStudy = add(timeStudy);
+    showTime(timeStudy);
+    
+    
+});
+subButton.addEventListener('click', () => {
+    timeStudy = subtract(timeStudy);
+    showTime(timeStudy);
+});
+
+
+
 startButton.onclick = () => {
 
-    studyOrBreak = "study"
-    disappear(timeButtons);
+    console.log("THIS WORKS");
+    disappear(addButton);
+    disappear(subButton);
     disappear(startButton);
     show(stopButton);
     show(resetButton);
-    timeStudy = document.getElementById('study').value;
-    timeBreak = document.getElementById('break').value; //gets main seconds value from dropdown
     showTime(timeStudy);
     timeInterval = setInterval(timer, 1000);
 
@@ -73,9 +110,11 @@ continueButton.onclick = () => {
 }
 
 resetButton.onclick = () => {
+    timeStudy = 0;
     document.getElementById('timer').innerHTML = "00:00";
     clearInterval(timeInterval);
-    show(timeButtons);
+    show(addButton);
+    show(subButton);
     show(startButton);
     disappear(resetButton);
     disappear(continueButton);

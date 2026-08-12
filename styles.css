@@ -1,8 +1,8 @@
-* {
+/* * {
   box-sizing: border-box;
 }
 
-
+*/
 body {
   margin:0;
   width: 100vw;
@@ -14,17 +14,30 @@ body {
   -webkit-app-region: drag;
 }
 
+/* *
+.botaoFechar{
+  -webkit-app-region: no-drag;
+  cursor: pointer;
+  position: fixed;
+  left: 170px;
+  top: 15px;
+}
+.botaoFechar:hover {
+
+  opacity: 0.9;
+}
+
 
 .outer-app {
   border-radius: 10px;
   border-color: rgb(63, 167, 82);
   border-style: solid;
   display: grid;
-  width: 291px;
-  height: 431px;
+  width: 198px;
+  height: 298px;
   justify-content: center;
   align-items: center;
-  background-image: url("assets/fundo.png");
+  background-image: url("assets/FUNDO-PRINCIPAL.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -57,11 +70,14 @@ body {
 }
 
 
-
+*/
 button,
 input,
 textarea,
-select {
+select,
+img,
+.botaoFechar,
+.app,
+#timeButtons {
   -webkit-app-region: no-drag;
-  cursor: pointer;
 }
