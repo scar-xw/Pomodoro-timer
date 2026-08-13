@@ -5,6 +5,7 @@ const continueButton = document.getElementById('continueButton');
 const addButton = document.getElementById('moreTimeButton'); // Fixed ID match
 const subButton = document.getElementById('lessTimeButton');
 const timerRing = new Audio("assets/alarmClockSound.mp3");
+
 var timeStudy = 0
 var interval = 0;
 
@@ -30,6 +31,7 @@ function show(item){
     item.style.display = 'block';
 }
 
+//subtracts 1 second and shows item in the timer 
 function timer(){
     
     if(timeStudy > 0){
@@ -40,12 +42,14 @@ function timer(){
         showTime(timeStudy);
         clearInterval(timeInterval);
         timerRing.play();
+        disappear(pandaSleeping);
+        show(pandaAwake);
         return null;
     }
 
 }
 
-
+//subtracts 5 min
 function subtract(time){
     if (time > 0 ){
         time = time - 300;
@@ -53,6 +57,7 @@ function subtract(time){
     return time;
 }
 
+//adds 5 min
 function add(time){
     if (time < 3600 ){
         time = time + 300;
@@ -65,6 +70,7 @@ function add(time){
 disappear(stopButton);
 disappear(resetButton);
 disappear(continueButton);
+disappear(pandaSleeping);
 
 
 addButton.addEventListener('click', () =>{
@@ -80,36 +86,37 @@ subButton.addEventListener('click', () => {
 
 
 
-startButton.onclick = () => {
+startButton.addEventListener('click',() => {
 
-    console.log("THIS WORKS");
+    disappear(pandaAwake);
     disappear(addButton);
     disappear(subButton);
     disappear(startButton);
+    show(pandaSleeping);
     show(stopButton);
     show(resetButton);
-    showTime(timeStudy);
-    timeInterval = setInterval(timer, 1000);
-
-}
-
-stopButton.onclick = () => {
-    clearInterval(timeInterval);
-    disappear(stopButton);
     show(continueButton);
-    
-    
-}
-
-continueButton.onclick = () => {
-    disappear(continueButton);
-    show(stopButton);
     showTime(timeStudy);
     timeInterval = setInterval(timer, 1000);
 
-}
+});
 
-resetButton.onclick = () => {
+stopButton.addEventListener('click', () => {
+    console.log("this is working");
+    clearInterval(timeInterval);
+
+    
+    
+});
+
+continueButton.addEventListener('click', () => {
+
+    showTime(timeStudy);
+    timeInterval = setInterval(timer, 1000);
+
+});
+
+resetButton.addEventListener('click',() => {
     timeStudy = 0;
     document.getElementById('timer').innerHTML = "00:00";
     clearInterval(timeInterval);
@@ -118,8 +125,11 @@ resetButton.onclick = () => {
     show(startButton);
     disappear(resetButton);
     disappear(continueButton);
+    disappear(stopButton);
+    disappear(pandaSleeping);
+    show(pandaAwake);
 
-}
+});
 
 
 

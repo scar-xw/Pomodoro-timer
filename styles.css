@@ -1,8 +1,12 @@
-/* * {
-  box-sizing: border-box;
-}
 
-*/
+ @font-face {
+      font-family: 'Ithaca';
+      src: url('assets/Ithaca_Font/Ithaca.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+
 body {
   margin:0;
   width: 100vw;
@@ -27,12 +31,10 @@ body {
   opacity: 0.9;
 }
 
-
+*/
 .outer-app {
-  border-radius: 10px;
-  border-color: rgb(63, 167, 82);
-  border-style: solid;
   display: grid;
+  
   width: 198px;
   height: 298px;
   justify-content: center;
@@ -40,44 +42,96 @@ body {
   background-image: url("assets/FUNDO-PRINCIPAL.png");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover;
+ 
+  background-size:cover;
 }
 
+#timer-area{
+  display:flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  z-index: 1;
+}
 
+#timer-and-background{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("assets/timerBackground.png"); 
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 150px;
+  height: 50px;
+}
 
-.buttons-bellow{
-  position: flex;
+#lessTimeButton{
+   
+   position:fixed;
+   left:18px;
+   Z-index: 10;
+}
+
+#moreTimeButton{
+  position:fixed;
+  left:160px;
+  Z-index: 10;
+}
+
+#control-buttons{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+#barButtons{
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  margin-top: 8px;
+  margin-left: 132px;
+}
+
+#closeButtonWindow{
+  margin-left: 3px;
+}
+
+#panda{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-self: center;
+  height: 128px;
 
 }
 
-
+img[role="button"]:hover{
+  opacity:0.85;
+  transform: scale(1.2);
+}
 
 .timer-font  {
-  font-family: "Bitcount Grid Double", system-ui;
-  font-optical-sizing: auto;
-  font-weight: 500;
-  font-size:250%;
-  font-style: normal;
-  color:rgb(26, 117, 41);
-  font-variation-settings:
-    "slnt" 0,
-    "CRSV" 0.5,
-    "ELSH" 0,
-    "ELXP" 0;
+  margin-top:5px;
+  font-family: 'Ithaca', monospace;
+  font-size:xxx-large;
+  color:#074513;
 
-    margin-left: 10px;
-    margin-right: 10px;
 }
 
+   
 
-*/
 button,
 input,
 textarea,
 select,
 img,
 .botaoFechar,
-.app,
-#timeButtons {
+
+#timer-area {
   -webkit-app-region: no-drag;
 }
