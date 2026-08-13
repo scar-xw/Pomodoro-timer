@@ -1,10 +1,17 @@
-# 🐼 Pixel Panda Pomodoro Timer
+# 🌱🐼 Pixel Panda-doro Timer🐼🌱
 
 A cute, lightweight desktop Pomodoro timer built with **Electron**, designed to boost your productivity and keep you focused while studying or working alongside an adorable pixel-art panda companion!
 
----
+<img width="1472" height="902" alt="image" src="https://github.com/user-attachments/assets/0977fab5-3493-4ecf-a0ef-16e31fd0ea90" />
 
-## ✨ Features
+<img width="208" height="301" alt="image" src="https://github.com/user-attachments/assets/c68309f3-8c16-4812-bc93-11ecd40a9234"  /> 
+<img width="200" height="306" alt="image" src="https://github.com/user-attachments/assets/2ce1039c-a9d0-4f7e-af6b-eecb7cedd2b7" />
+
+
+
+
+
+##  Features
 
 * **Adorable Pixel Aesthetics:** Custom pixel art UI featuring a sleeping panda when the timer is running.
 * **Compact Desktop Overlay:** Small footprint designed to stay on your desktop without cluttering your workspace.
@@ -12,9 +19,9 @@ A cute, lightweight desktop Pomodoro timer built with **Electron**, designed to 
 * **Simple Timer Controls:** Start, pause, reset, and easily adjust focus time with dedicated `+` and `-` buttons.
 * **Frameless & Draggable:** Easily drag the window anywhere on your screen.
 
----
 
-## 🛠️ Built With
+
+##  Built With
 
 * **[Electron](https://www.electronjs.org/)** – Cross-platform desktop application framework
 * **HTML5** – Markup structure
@@ -23,7 +30,7 @@ A cute, lightweight desktop Pomodoro timer built with **Electron**, designed to 
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 Follow these steps to get a local copy up and running on your machine.
 
@@ -32,7 +39,7 @@ Follow these steps to get a local copy up and running on your machine.
 You need **Node.js** and **npm** installed on your system.
 * [Download Node.js](https://nodejs.org/)
 
----
+
 
 ### 📦 Installation
 
@@ -51,7 +58,7 @@ You need **Node.js** and **npm** installed on your system.
    npm install
    ```
 
----
+
 
 ## 🎮 How to Use
 
