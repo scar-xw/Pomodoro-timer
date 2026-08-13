@@ -60,7 +60,7 @@ You need **Node.js** and **npm** installed on your system.
 
 
 
-## 🎮 How to Use
+##  How to Use
 
 1. **Run the application:**
    ```bash
