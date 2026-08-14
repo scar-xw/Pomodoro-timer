@@ -34,10 +34,22 @@ function show(item){
 //subtracts 1 second and shows item in the timer 
 function timer(){
     
+
+    
     if(timeStudy > 0){
     selectedTime = timeStudy -1;
     showTime(selectedTime);
     timeStudy = selectedTime -1;
+        if((timeStudy % 2) == 0){
+                disappear(pandaSleeping);
+                show(pandaAwake);
+                return null;
+        } else if((timeStudy % 2) == 1){
+                disappear(pandaAwake);
+                show(pandaSleeping);
+                return null;
+        }
+
     }else if(timeStudy == 0){
         showTime(timeStudy);
         clearInterval(timeInterval);
