@@ -5,6 +5,8 @@ const continueButton = document.getElementById('continueButton');
 const addButton = document.getElementById('moreTimeButton'); // Fixed ID match
 const subButton = document.getElementById('lessTimeButton');
 const timerRing = new Audio("assets/alarmClockSound.mp3");
+const pandaSleeping1 = document.getElementById('pandaSleeping1');
+const pandaSleeping2 = document.getElementById('pandaSleeping2');
 
 var timeStudy = 0
 var interval = 0;
@@ -39,22 +41,21 @@ function timer(){
     if(timeStudy > 0){
     selectedTime = timeStudy -1;
     showTime(selectedTime);
-    timeStudy = selectedTime -1;
-        if((timeStudy % 2) == 0){
-                disappear(pandaSleeping);
-                show(pandaAwake);
-                return null;
-        } else if((timeStudy % 2) == 1){
-                disappear(pandaAwake);
-                show(pandaSleeping);
-                return null;
+    timeStudy -=1; 
+    
+        if((selectedTime % 2) == 0){
+                show(pandaSleeping1);
+                disappear(pandaSleeping2);
+        } else if((selectedTime % 2) == 1){
+                disappear(pandaSleeping1);
+                show(pandaSleeping2);
+                
         }
 
     }else if(timeStudy == 0){
         showTime(timeStudy);
-        clearInterval(timeInterval);
         timerRing.play();
-        disappear(pandaSleeping);
+        disappear(pandaSleeping1);
         show(pandaAwake);
         return null;
     }
@@ -82,8 +83,8 @@ function add(time){
 disappear(stopButton);
 disappear(resetButton);
 disappear(continueButton);
-disappear(pandaSleeping);
-
+disappear(pandaSleeping1);
+disappear(pandaSleeping2);
 
 addButton.addEventListener('click', () =>{
     timeStudy = add(timeStudy);
@@ -104,7 +105,7 @@ startButton.addEventListener('click',() => {
     disappear(addButton);
     disappear(subButton);
     disappear(startButton);
-    show(pandaSleeping);
+    show(pandaSleeping1);
     show(stopButton);
     show(resetButton);
     show(continueButton);
@@ -138,57 +139,8 @@ resetButton.addEventListener('click',() => {
     disappear(resetButton);
     disappear(continueButton);
     disappear(stopButton);
-    disappear(pandaSleeping);
+    disappear(pandaSleeping1);
+    disappear(pandaSleeping2);
     show(pandaAwake);
 
 });
-
-
-
-    
-    
-
-
-    
-
-
-
-
-
-    
-    
-     // time vai regredir de segundo em segundo
-
-    
-
-// quando time acabar regressao para
-// quando regressao parar aparece um aviso na tela
-
-
-    
-
-
-
-
-
-// function showTime(t){
-
-//     var seconds = 
-
-//     document.getElementById('timer').innerHTML = current_time;
-
-// }
-    
-
-// function timer(t){
-//     if  (working = false){
-//         working = true;
-//         time = t;
-//         showTime();
-//         interval = setInterval(showTime,1000);
-
-
-//     }
-// }
-
-

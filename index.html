@@ -13,16 +13,25 @@
     />
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&display=swap"
-      rel="stylesheet"
-    />
+ 
+
+
   </head>
 
   <body>
     <div class="outer-app">
+      
+      <div id="barButtons">
+
+        <!-- Min button -->
+      <img
+        src="C:\Users\becca\Documents\PROJECTS\Pomodoro-timer\assets\-.png"
+        width="20"
+        height="20"
+        class="botaoMin"
+        alt="Min"
+        role="button"
+      />
       <!-- Close button -->
       <img
         src="C:\Users\becca\Documents\PROJECTS\Pomodoro-timer\assets\X.png"
@@ -30,32 +39,45 @@
         height="20"
         class="botaoFechar"
         alt="Close"
+        role="button"
+        id="closeButtonWindow"
       />
+      
+      </div>
 
-      <div class="app">
-        <!-- Panda image -->
-        <div class="panda">
-          <img
-            src="C:\Users\becca\Documents\PROJECTS\Pomodoro-timer\assets\PANDA.png"
-            width="90"
-            height="100"
-            alt="Panda"
-          />
-        </div>
+      <!-- Panda image/gif -->
+      <div id="panda">
+        <img id="pandaAwake"
+            src="C:\Users\becca\Documents\PROJECTS\Pomodoro-timer\assets\PandaAwake.png"
+            width="140"
+            height="130"
+        />
 
-        <div>
-          <h2 id="timer" class="timer-font">00:00</h2>
-        </div>
+        <img id="pandaSleeping1"
+            src="C:\Users\becca\Documents\PROJECTS\Pomodoro-timer\assets\PandaSleeping.png"
+            width="150"
+            height="138"
+        />
 
-        <!-- Buttons for time definition -->
-        <div id="timeButtons">
-           <!-- Less time button -->
-          <img id="lessTimeButton"
+            <img id="pandaSleeping2"
+            src="C:\Users\becca\Documents\PROJECTS\Pomodoro-timer\assets\PandaSleeping.png"
+            width="150"
+            height="130"
+        />
+
+      </div>
+
+      <div id="timer-area">
+ <!-- Less time button -->
+        <img id="lessTimeButton"
             src="C:\Users\becca\Documents\PROJECTS\Pomodoro-timer\assets\-.png"
             width="20"
             height="20"
             role ="button"
             />
+        <div id="timer-and-background">
+          <h2 id="timer" class="timer-font">00:00</h2>
+        </div>         
 
            <!-- More time button -->
             <img id="moreTimeButton"
@@ -63,29 +85,55 @@
             width="20"
             height="20"
             role ="button"/>
-        </div>
+      </div>
 
         <!-- Start button -->
-        <div>
-          <button id="startButton" type="button">START</button>
-        </div>
+        <div id="control-buttons">
+          
+          <img id="startButton"
+          src="C:\Users\becca\Documents\PROJECTS\Pomodoro-timer\assets\START.png"
+          width="90"
+          height="40"
+          alt="Start"
+          role="button"
+          />
+        
 
-        <!-- Stop button -->
-        <div class="stop-button">
-          <button id="stopButton" type="button">STOP</button>
-        </div>
+       
 
         <!-- Reset Button -->
-        <div>
-          <button id="resetButton" type="button">RESET</button>
-        </div>
+        
+          <img id="resetButton"
+          src="C:\Users\becca\Documents\PROJECTS\Pomodoro-timer\assets\restart.png"
+          width="40"
+          height="40"
+          role="button"
+          />
+       
 
         <!-- Continue Button -->
-        <div>
-          <button type="button" id="continueButton">CONTINUE</button>
-        </div>
-      </div>
-    </div>
+        
+          <img id="continueButton"
+          src="C:\Users\becca\Documents\PROJECTS\Pomodoro-timer\assets\play.png"
+          width="40"
+          height="40"
+          role="button"
+          >
+        
+           <!-- Stop button -->
+        
+          <img id="stopButton"
+          src="C:\Users\becca\Documents\PROJECTS\Pomodoro-timer\assets\II.png"
+          width="40"
+          height="40"
+          role="button"
+          />
+       
+          </div>
+      
+      
+      </div> <!--outer app-->
+    
 
     <script src="script.js" defer></script>
     <script

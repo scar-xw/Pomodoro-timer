@@ -32,6 +32,9 @@ body {
 }
 
 */
+
+
+
 .outer-app {
   display: grid;
   
@@ -42,7 +45,7 @@ body {
   background-image: url("assets/FUNDO-PRINCIPAL.png");
   background-repeat: no-repeat;
   background-position: center;
- 
+
   background-size:cover;
 }
 
