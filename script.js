@@ -2,67 +2,71 @@ const startButton = document.getElementById('startButton');
 const stopButton = document.getElementById('stopButton');
 const resetButton = document.getElementById('resetButton');
 const continueButton = document.getElementById('continueButton');
-const addButton = document.getElementById('moreTimeButton'); // Fixed ID match
+const addButton = document.getElementById('moreTimeButton');
 const subButton = document.getElementById('lessTimeButton');
 const timerRing = new Audio("assets/alarmClockSound.mp3");
 const pandaSleeping1 = document.getElementById('pandaSleeping1');
 const pandaSleeping2 = document.getElementById('pandaSleeping2');
+const pandaAwake = document.getElementById('pandaAwake');
+let timeInterval = 0;
 
-var timeStudy = 0
-var interval = 0;
+var timeStudy = 0;
+var working = false;
 
-//shows time in seconds (300) as timer form 05:00 in element 'timer'
+// Shows time in seconds (e.g. 300) as a "05:00" timer format in the 'timer' element
 function showTime(timeInSeconds){
 
-    var seconds = timeInSeconds%60;
-    var minutes = timeInSeconds/60;
+    var seconds = timeInSeconds % 60;
+    var minutes = timeInSeconds / 60;
     seconds = (seconds.toFixed(0));
     minutes = Math.floor(minutes);
     document.getElementById('timer').innerHTML = (String(minutes)).padStart(2,0) + ":" + seconds.padStart(2,0);
     return null;
-    
+
 }
 
-//elements dissapears
+// Hides an element
 function disappear(item){
     item.style.display = 'none';
 }
 
-//element shows
+// Shows an element
 function show(item){
     item.style.display = 'block';
 }
 
-//subtracts 1 second and shows item in the timer 
+// Subtracts 1 second and updates the timer display
 function timer(){
-    
 
-    
-    if(timeStudy > 0){
-    selectedTime = timeStudy -1;
-    showTime(selectedTime);
-    timeStudy -=1; 
-    
-        if((selectedTime % 2) == 0){
-                show(pandaSleeping1);
-                disappear(pandaSleeping2);
-        } else if((selectedTime % 2) == 1){
-                disappear(pandaSleeping1);
-                show(pandaSleeping2);
-                
+        working = true;
+        if(timeStudy > 0){
+        selectedTime = timeStudy -1;
+        showTime(selectedTime);
+        timeStudy -=1;
+
+            if((selectedTime % 2) == 0){
+                    show(pandaSleeping1);
+                    disappear(pandaSleeping2);
+            } else if((selectedTime % 2) == 1){
+                    disappear(pandaSleeping1);
+                    show(pandaSleeping2);
+
+            }
+
+        }else if(timeStudy == 0){
+            showTime(timeStudy);
+            timerRing.play();
+            disappear(pandaSleeping1);
+            show(pandaAwake);
+             working = false;
+            return null;
         }
 
-    }else if(timeStudy == 0){
-        showTime(timeStudy);
-        timerRing.play();
-        disappear(pandaSleeping1);
-        show(pandaAwake);
-        return null;
     }
 
-}
 
-//subtracts 5 min
+
+// Subtracts 5 minutes
 function subtract(time){
     if (time > 0 ){
         time = time - 300;
@@ -70,13 +74,13 @@ function subtract(time){
     return time;
 }
 
-//adds 5 min
+// Adds 5 minutes
 function add(time){
     if (time < 3600 ){
         time = time + 300;
     }
-    
-    
+
+
      return time;
 }
 
@@ -89,17 +93,16 @@ disappear(pandaSleeping2);
 addButton.addEventListener('click', () =>{
     timeStudy = add(timeStudy);
     showTime(timeStudy);
-    
-    
+
 });
 subButton.addEventListener('click', () => {
     timeStudy = subtract(timeStudy);
     showTime(timeStudy);
 });
-
-
-
 startButton.addEventListener('click',() => {
+
+
+    working = true;
 
     disappear(pandaAwake);
     disappear(addButton);
@@ -110,22 +113,24 @@ startButton.addEventListener('click',() => {
     show(resetButton);
     show(continueButton);
     showTime(timeStudy);
+
     timeInterval = setInterval(timer, 1000);
+
 
 });
 
 stopButton.addEventListener('click', () => {
-    console.log("this is working");
+    working = false;
     clearInterval(timeInterval);
 
-    
-    
+
 });
 
 continueButton.addEventListener('click', () => {
 
+    if (working == false){
     showTime(timeStudy);
-    timeInterval = setInterval(timer, 1000);
+    timeInterval = setInterval(timer, 1000);}
 
 });
 
@@ -142,5 +147,6 @@ resetButton.addEventListener('click',() => {
     disappear(pandaSleeping1);
     disappear(pandaSleeping2);
     show(pandaAwake);
+    working = false;
 
 });
