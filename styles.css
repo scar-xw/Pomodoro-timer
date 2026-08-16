@@ -1,39 +1,19 @@
-
- @font-face {
+@font-face {
       font-family: 'Ithaca';
       src: url('assets/Ithaca_Font/Ithaca.ttf') format('truetype');
       font-weight: normal;
       font-style: normal;
     }
 
-
 body {
   margin:0;
   width: 100vw;
   height: 100vh;
   
-
   background: rgb(0, 0, 0);
   user-select: none;
   -webkit-app-region: drag;
 }
-
-/* *
-.botaoFechar{
-  -webkit-app-region: no-drag;
-  cursor: pointer;
-  position: fixed;
-  left: 170px;
-  top: 15px;
-}
-.botaoFechar:hover {
-
-  opacity: 0.9;
-}
-
-*/
-
-
 
 .outer-app {
   display: grid;
@@ -124,16 +104,14 @@ img[role="button"]:hover{
   font-size:xxx-large;
   color:#074513;
 
-}
-
-   
+} 
 
 button,
 input,
 textarea,
 select,
 img,
-.botaoFechar,
+.close-button,
 
 #timer-area {
   -webkit-app-region: no-drag;

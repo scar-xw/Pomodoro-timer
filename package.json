@@ -1,14 +1,16 @@
 {
   "name": "pomodoro-timer",
   "version": "0.0.1",
-  "description": "This is a pomodoro cute app",
+  "description": "A cute, lightweight desktop Pomodoro timer built with Electron",
   "keywords": [
     "electron",
-    "reactjs",
-    "typescript"
+    "javascript",
+    "css",
+    "html",
+    "bootstrap"
   ],
-  "license": "ISC",
-  "author": "MIT",
+  "license": "MIT",
+  "author": "Rebecca McDonnell",
   "type": "commonjs",
   "main": "main.js",
   "scripts": {

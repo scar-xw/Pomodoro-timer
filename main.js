@@ -1,4 +1,5 @@
-const {app, BrowserWindow} = require('electron') //importing electron modules with JS
+const {app, BrowserWindow, ipcMain} = require('electron'); //importing electron modules with JS
+const path = require('path');
 
 const createWindow = () => {
     const win = new BrowserWindow({
@@ -10,7 +11,9 @@ const createWindow = () => {
       frame: false, 
       transparent: false,
       webPreferences: {
-        contextIsolation: true
+        preload: path.join(__dirname, 'preload.js'),
+        contextIsolation: true,
+        nodeIntegration: false
       }
     })
 
@@ -27,9 +30,11 @@ app.whenReady().then(() => {
   })
 })
 
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit()
-  }
+ipcMain.on('close-window', () => {
+  app.quit()
 })
 
+ipcMain.on('minimize-window', () => {
+  const win = BrowserWindow.getFocusedWindow()
+  if (win) win.minimize()
+})

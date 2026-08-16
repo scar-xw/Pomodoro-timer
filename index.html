@@ -12,55 +12,52 @@
       crossorigin="anonymous"
     />
 
-    <!-- Fonts -->
- 
-
-
   </head>
 
   <body>
     <div class="outer-app">
-      
+
       <div id="barButtons">
 
         <!-- Min button -->
       <img
-        src="C:\Users\becca\Documents\PROJECTS\Pomodoro-timer\assets\-.png"
+        src="assets/-.png"
         width="20"
         height="20"
-        class="botaoMin"
+        class="minimize-button"
         alt="Min"
         role="button"
+        id="minimizeButtonWindow"
       />
       <!-- Close button -->
       <img
-        src="C:\Users\becca\Documents\PROJECTS\Pomodoro-timer\assets\X.png"
+        src="assets/X.png"
         width="20"
         height="20"
-        class="botaoFechar"
+        class="close-button"
         alt="Close"
         role="button"
         id="closeButtonWindow"
       />
-      
+
       </div>
 
       <!-- Panda image/gif -->
       <div id="panda">
         <img id="pandaAwake"
-            src="C:\Users\becca\Documents\PROJECTS\Pomodoro-timer\assets\PandaAwake.png"
+            src="assets/PandaAwake.png"
             width="140"
             height="130"
         />
 
         <img id="pandaSleeping1"
-            src="C:\Users\becca\Documents\PROJECTS\Pomodoro-timer\assets\PandaSleeping.png"
+            src="assets/PandaSleeping.png"
             width="150"
             height="138"
         />
 
             <img id="pandaSleeping2"
-            src="C:\Users\becca\Documents\PROJECTS\Pomodoro-timer\assets\PandaSleeping.png"
+            src="assets/PandaSleeping.png"
             width="150"
             height="130"
         />
@@ -70,18 +67,18 @@
       <div id="timer-area">
  <!-- Less time button -->
         <img id="lessTimeButton"
-            src="C:\Users\becca\Documents\PROJECTS\Pomodoro-timer\assets\-.png"
+            src="assets/-.png"
             width="20"
             height="20"
             role ="button"
             />
         <div id="timer-and-background">
           <h2 id="timer" class="timer-font">00:00</h2>
-        </div>         
+        </div>
 
            <!-- More time button -->
             <img id="moreTimeButton"
-            src="C:\Users\becca\Documents\PROJECTS\Pomodoro-timer\assets\+.png"
+            src="assets/+.png"
             width="20"
             height="20"
             role ="button"/>
@@ -89,53 +86,53 @@
 
         <!-- Start button -->
         <div id="control-buttons">
-          
+
           <img id="startButton"
-          src="C:\Users\becca\Documents\PROJECTS\Pomodoro-timer\assets\START.png"
+          src="assets/START.png"
           width="90"
           height="40"
           alt="Start"
           role="button"
           />
-        
 
-       
+
 
         <!-- Reset Button -->
-        
+
           <img id="resetButton"
-          src="C:\Users\becca\Documents\PROJECTS\Pomodoro-timer\assets\restart.png"
+          src="assets/restart.png"
           width="40"
           height="40"
           role="button"
           />
-       
+
 
         <!-- Continue Button -->
-        
+
           <img id="continueButton"
-          src="C:\Users\becca\Documents\PROJECTS\Pomodoro-timer\assets\play.png"
+          src="assets/play.png"
           width="40"
           height="40"
           role="button"
           >
-        
+
            <!-- Stop button -->
-        
+
           <img id="stopButton"
-          src="C:\Users\becca\Documents\PROJECTS\Pomodoro-timer\assets\II.png"
+          src="assets/II.png"
           width="40"
           height="40"
           role="button"
           />
-       
+
           </div>
-      
-      
+
+
       </div> <!--outer app-->
-    
+
 
     <script src="script.js" defer></script>
+    <script src="renderer.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
