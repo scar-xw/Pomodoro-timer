@@ -4,29 +4,42 @@
       font-weight: normal;
       font-style: normal;
     }
-
+html, body {
+  background: rgba(0, 0, 0, 0);
+}
 body {
   margin:0;
   width: 100vw;
   height: 100vh;
   
-  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0);
   user-select: none;
   -webkit-app-region: drag;
 }
 
 .outer-app {
   display: grid;
-  
+  position: relative;
   width: 198px;
   height: 298px;
   justify-content: center;
   align-items: center;
-  background-image: url("assets/FUNDO-PRINCIPAL.png");
+    border-radius: 20px;  
+  overflow: hidden;
+  border: 3px solid #006414;
+  box-sizing: border-box;
+}
+
+.outer-app::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("assets/GB.png");
   background-repeat: no-repeat;
   background-position: center;
-
-  background-size:cover;
+  background-size: cover;
+  opacity: 0.89;
+  z-index: -1;
 }
 
 #timer-area{
