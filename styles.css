@@ -26,7 +26,7 @@ body {
   align-items: center;
     border-radius: 20px;  
   overflow: hidden;
-  border: 3px solid #006414;
+  border: 3px solid #446E3F;
   box-sizing: border-box;
 }
 
@@ -90,7 +90,7 @@ body {
   flex-direction: row;
   justify-content: end;
   margin-top: 8px;
-  margin-left: 132px;
+  margin-left: 8px;
 }
 
 #closeButtonWindow{
@@ -118,6 +118,40 @@ img[role="button"]:hover{
   color:#074513;
 
 } 
+
+#studyOrBreak{
+  position:relative;
+  margin-right: 50px;
+  font-family: 'Ithaca';
+  font-size: 1.5rem;
+  height: 25px;
+  border: 2px solid #446E3F ;
+  display: flex;
+  align-items: center;  
+  border-radius: 10px; 
+  gap: 7px;
+  background-color: #BAD2B5;
+  padding:4px;
+  
+}
+
+.break-light {
+    width: 6px;
+    height: 6px;
+    background-color: #52ac50;
+    border-radius: 50%;
+    animation: pulseGlow 1.5s infinite;
+}
+
+.study-light {
+    width: 6px;
+    height: 6px;
+    background-color: #ea7a7a;
+    border-radius: 50%;
+    animation: pulseGlow 1.5s infinite;
+}
+
+
 
 button,
 input,
