@@ -4,6 +4,13 @@
       font-weight: normal;
       font-style: normal;
     }
+
+@keyframes pulseGlow {
+    0%   { opacity: 1; transform: scale(1); }
+    50%  { opacity: 0.4; transform: scale(1.3); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
 html, body {
   background: rgba(0, 0, 0, 0);
 }
@@ -119,7 +126,7 @@ img[role="button"]:hover{
 
 } 
 
-#studyOrBreak{
+#study-break-tag{
   position:relative;
   margin-right: 50px;
   font-family: 'Ithaca';
@@ -135,21 +142,28 @@ img[role="button"]:hover{
   
 }
 
+.textStudyOrBreak{
+    margin: 0;
+    line-height: 1;
+    font-family: 'Ithaca';
+    font-size: 1.5rem;}
+
 .break-light {
     width: 6px;
     height: 6px;
-    background-color: #52ac50;
     border-radius: 50%;
     animation: pulseGlow 1.5s infinite;
+    background-color: #0f980d;
 }
 
 .study-light {
     width: 6px;
     height: 6px;
-    background-color: #ea7a7a;
     border-radius: 50%;
     animation: pulseGlow 1.5s infinite;
+    background-color: #dd0f0f;
 }
+
 
 
 

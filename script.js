@@ -8,8 +8,12 @@ const timerRing = new Audio("assets/alarmClockSound.mp3");
 const pandaSleeping1 = document.getElementById('pandaSleeping1');
 const pandaSleeping2 = document.getElementById('pandaSleeping2');
 const pandaAwake = document.getElementById('pandaAwake');
+const light = document.getElementById('light');
+const visualTag = document.getElementById('textStudyOrBreak');
+
 let timeInterval = 0;
 
+var studyOrBreak = 'break';
 var timeStudy = 0;
 var working = false;
 
@@ -84,6 +88,26 @@ function add(time){
      return time;
 }
 
+function studyBreakSwitch(){
+    if (studyOrBreak === 'break'){
+        console.log('hello this works break to study');
+        studyOrBreak = 'study';
+        visualTag.innerHTML = ' STUDY';
+        light.classList.remove('break-light');
+        light.classList.add('study-light');
+
+
+    } else if (studyOrBreak === 'study'){
+        console.log('hello this works study to break  ');
+
+        studyOrBreak = 'break';
+
+        visualTag.innerHTML = ' BREAK';
+        light.classList.remove('study-light');
+        light.classList.add('break-light');
+    }
+}
+
 disappear(stopButton);
 disappear(resetButton);
 disappear(continueButton);
@@ -101,7 +125,7 @@ subButton.addEventListener('click', () => {
 });
 startButton.addEventListener('click',() => {
 
-
+    studyBreakSwitch();
     working = true;
 
     disappear(pandaAwake);
@@ -122,6 +146,7 @@ startButton.addEventListener('click',() => {
 stopButton.addEventListener('click', () => {
     working = false;
     clearInterval(timeInterval);
+    studyBreakSwitch();
 
 
 });
@@ -131,6 +156,7 @@ continueButton.addEventListener('click', () => {
     if (working == false){
     showTime(timeStudy);
     timeInterval = setInterval(timer, 1000);}
+    studyBreakSwitch()
 
 });
 
@@ -148,5 +174,5 @@ resetButton.addEventListener('click',() => {
     disappear(pandaSleeping2);
     show(pandaAwake);
     working = false;
-
+    studyBreakSwitch()
 });
