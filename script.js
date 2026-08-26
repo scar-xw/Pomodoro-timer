@@ -7,15 +7,19 @@ const subButton = document.getElementById('lessTimeButton');
 const timerRing = new Audio("assets/alarmClockSound.mp3");
 const pandaSleeping1 = document.getElementById('pandaSleeping1');
 const pandaSleeping2 = document.getElementById('pandaSleeping2');
-const pandaAwake = document.getElementById('pandaAwake');
+const pandaAwake1 = document.getElementById('pandaAwake');
+const pandaAwake2 = document.getElementById('pandaAwake2');
+
 const light = document.getElementById('light');
 const visualTag = document.getElementById('textStudyOrBreak');
+const MAX_STUDY_SESSIONS = 3; 
 
 let timeInterval = 0;
-
-var studyOrBreak = 'break';
-var timeStudy = 0;
-var working = false;
+let studySession = 0;
+let studyOrBreak = 'break';
+let timeStudy = 0;
+let timeBreak = 0;
+let working = false;
 
 // Shows time in seconds (e.g. 300) as a "05:00" timer format in the 'timer' element
 function showTime(timeInSeconds){
@@ -49,11 +53,32 @@ function timer(){
         timeStudy -=1;
 
             if((selectedTime % 2) == 0){
+                
+                if(studyOrBreak === 'study'){
+                    disappear(pandaAwake1);
+                    disappear(pandaAwake2);
                     show(pandaSleeping1);
                     disappear(pandaSleeping2);
-            } else if((selectedTime % 2) == 1){
+                }else{
                     disappear(pandaSleeping1);
+                    disappear(pandaSleeping2);
+                    show(pandaAwake1);
+                    disappear(pandaAwake2);
+                    }
+            } else if((selectedTime % 2) == 1){
+
+                if(studyOrBreak === 'study'){
+                    disappear(pandaAwake1);
+                    disappear(pandaAwake2);
                     show(pandaSleeping2);
+                    disappear(pandaSleeping1);
+                }else{
+                    disappear(pandaSleeping1);
+                    disappear(pandaSleeping2);
+                    show(pandaAwake2);
+                    disappear(pandaAwake1);
+                    }
+ 
 
             }
 
@@ -61,10 +86,34 @@ function timer(){
             showTime(timeStudy);
             timerRing.play();
             disappear(pandaSleeping1);
-            show(pandaAwake);
+            show(pandaAwake1);
              working = false;
             return null;
         }
+
+        
+        
+
+        if (timeStudy == 0){
+        if (studySession <= 3){
+        if (studyOrBreak === 'study'){
+            console.log('hey this works study or break');
+           timeStudy = timeBreak; 
+           studyBreakSwitch();
+           return null;
+        }else {
+            studySession = studySession+ 1;
+            timeStudy = ogTime;
+            studyBreakSwitch();
+            
+            return null;
+        }} else {
+            studySession = 0;
+            clear(timeInterval);
+            timer.innerHTML = 'DONE!';
+        }}
+
+
 
     }
 
@@ -73,7 +122,7 @@ function timer(){
 // Subtracts 5 minutes
 function subtract(time){
     if (time > 0 ){
-        time = time - 300;
+        time = time - 10;
     }
     return time;
 }
@@ -81,7 +130,7 @@ function subtract(time){
 // Adds 5 minutes
 function add(time){
     if (time < 3600 ){
-        time = time + 300;
+        time = time + 10;
     }
 
 
@@ -90,21 +139,26 @@ function add(time){
 
 function studyBreakSwitch(){
     if (studyOrBreak === 'break'){
-        console.log('hello this works break to study');
+        console.log('break to study');
+
         studyOrBreak = 'study';
         visualTag.innerHTML = ' STUDY';
         light.classList.remove('break-light');
         light.classList.add('study-light');
+        disappear(pandaAwake1);
+        show(pandaSleeping1);
 
 
     } else if (studyOrBreak === 'study'){
-        console.log('hello this works study to break  ');
+        console.log('study to break  ');
 
         studyOrBreak = 'break';
-
         visualTag.innerHTML = ' BREAK';
         light.classList.remove('study-light');
         light.classList.add('break-light');
+        disappear(pandaSleeping1);
+        disappear(pandaSleeping2);
+        show(pandaAwake1);
     }
 }
 
@@ -113,6 +167,7 @@ disappear(resetButton);
 disappear(continueButton);
 disappear(pandaSleeping1);
 disappear(pandaSleeping2);
+disappear(pandaAwake2);
 
 addButton.addEventListener('click', () =>{
     timeStudy = add(timeStudy);
@@ -125,10 +180,14 @@ subButton.addEventListener('click', () => {
 });
 startButton.addEventListener('click',() => {
 
+    let ogTime = timeStudy;
+    timeBreak = timeStudy * 0.2;
+
     studyBreakSwitch();
     working = true;
 
-    disappear(pandaAwake);
+    disappear(pandaAwake1);
+    disappear(pandaAwake2);
     disappear(addButton);
     disappear(subButton);
     disappear(startButton);
@@ -164,15 +223,16 @@ resetButton.addEventListener('click',() => {
     timeStudy = 0;
     document.getElementById('timer').innerHTML = "00:00";
     clearInterval(timeInterval);
+
     show(addButton);
     show(subButton);
     show(startButton);
+
     disappear(resetButton);
     disappear(continueButton);
     disappear(stopButton);
-    disappear(pandaSleeping1);
-    disappear(pandaSleeping2);
-    show(pandaAwake);
-    working = false;
     studyBreakSwitch()
+    
+    working = false;
+    
 });
