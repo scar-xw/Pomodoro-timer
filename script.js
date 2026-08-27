@@ -27,7 +27,6 @@ let timeBreak = 0;
 let ogTime = timeStudy;
 let working = false;
 
-// Shows time in seconds (e.g. 300) as a "05:00" timer format in the 'timer' element
 function showTime(timeInSeconds){
 
     var seconds = timeInSeconds % 60;
@@ -39,17 +38,13 @@ function showTime(timeInSeconds){
 
 }
 
-// Hides an element
 function disappear(item){
     item.style.display = 'none';
 }
 
-// Shows an element
 function show(item){
     item.style.display = 'block';
 }
-
-// Subtracts 1 second and updates the timer display
 function timer(){
 
     working = true;
@@ -59,7 +54,6 @@ function timer(){
         timeStudy -=1;
         
 
-        //panda animation:
         if((timeStudy % 2) == 0){
                 
             if(studyOrBreak === 'study'){
@@ -88,7 +82,6 @@ function timer(){
         }
 
     }
-
         if (timeStudy == -1){
             
             if (studySession < 3){
@@ -112,7 +105,6 @@ function timer(){
                         bottomLight2.classList.add('break-light');
                     }
 
-                    
                     return null;
             }} else {
                 bottomLight3.classList.remove('study-light');
@@ -123,13 +115,8 @@ function timer(){
                 working = false;
         }}
 
-
-
     }
 
-
-
-// Subtracts 5 minutes
 function subtract(time){
     if (time > 0 ){
         time = time - 10;
@@ -137,12 +124,10 @@ function subtract(time){
     return time;
 }
 
-// Adds 5 minutes
 function add(time){
     if (time < 3600 ){
         time = time + 10;
     }
-
 
      return time;
 }
@@ -209,14 +194,12 @@ startButton.addEventListener('click',() => {
 
     timeInterval = setInterval(timer, 1000);
 
-
 });
 
 stopButton.addEventListener('click', () => {
     working = false;
     clearInterval(timeInterval);
     studyBreakSwitch();
-
 
 });
 
