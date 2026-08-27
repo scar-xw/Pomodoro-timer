@@ -9,16 +9,22 @@ const pandaSleeping1 = document.getElementById('pandaSleeping1');
 const pandaSleeping2 = document.getElementById('pandaSleeping2');
 const pandaAwake1 = document.getElementById('pandaAwake');
 const pandaAwake2 = document.getElementById('pandaAwake2');
+const timerDisplay = document.getElementById('timer');
+const bottomLight1 = document.getElementById('bottomLight1');
+const bottomLight2 = document.getElementById('bottomLight2');
+const bottomLight3 = document.getElementById('bottomLight3');
+
 
 const light = document.getElementById('light');
 const visualTag = document.getElementById('textStudyOrBreak');
 const MAX_STUDY_SESSIONS = 3; 
 
 let timeInterval = 0;
-let studySession = 0;
+let studySession = 1;
 let studyOrBreak = 'break';
 let timeStudy = 0;
 let timeBreak = 0;
+let ogTime = timeStudy;
 let working = false;
 
 // Shows time in seconds (e.g. 300) as a "05:00" timer format in the 'timer' element
@@ -28,7 +34,7 @@ function showTime(timeInSeconds){
     var minutes = timeInSeconds / 60;
     seconds = (seconds.toFixed(0));
     minutes = Math.floor(minutes);
-    document.getElementById('timer').innerHTML = (String(minutes)).padStart(2,0) + ":" + seconds.padStart(2,0);
+    timerDisplay.innerHTML = (String(minutes)).padStart(2,0) + ":" + seconds.padStart(2,0);
     return null;
 
 }
@@ -46,71 +52,75 @@ function show(item){
 // Subtracts 1 second and updates the timer display
 function timer(){
 
-        working = true;
-        if(timeStudy > 0){
-        selectedTime = timeStudy -1;
-        showTime(selectedTime);
+    working = true;
+
+    if(timeStudy > -1){
+        showTime(timeStudy);
         timeStudy -=1;
+        
 
-            if((selectedTime % 2) == 0){
+        //panda animation:
+        if((timeStudy % 2) == 0){
                 
-                if(studyOrBreak === 'study'){
-                    disappear(pandaAwake1);
-                    disappear(pandaAwake2);
-                    show(pandaSleeping1);
-                    disappear(pandaSleeping2);
-                }else{
-                    disappear(pandaSleeping1);
-                    disappear(pandaSleeping2);
-                    show(pandaAwake1);
-                    disappear(pandaAwake2);
-                    }
-            } else if((selectedTime % 2) == 1){
-
-                if(studyOrBreak === 'study'){
-                    disappear(pandaAwake1);
-                    disappear(pandaAwake2);
-                    show(pandaSleeping2);
-                    disappear(pandaSleeping1);
-                }else{
-                    disappear(pandaSleeping1);
-                    disappear(pandaSleeping2);
-                    show(pandaAwake2);
-                    disappear(pandaAwake1);
-                    }
- 
-
-            }
-
-        }else if(timeStudy == 0){
-            showTime(timeStudy);
-            timerRing.play();
-            disappear(pandaSleeping1);
-            show(pandaAwake1);
-             working = false;
-            return null;
+            if(studyOrBreak === 'study'){
+                disappear(pandaAwake1);
+                disappear(pandaAwake2);
+                show(pandaSleeping1);
+                disappear(pandaSleeping2);
+            }else{
+                disappear(pandaSleeping1);
+                disappear(pandaSleeping2);
+                show(pandaAwake1);
+                disappear(pandaAwake2);
+                }
+        } else if((timeStudy % 2) == 1){
+            if(studyOrBreak === 'study'){
+                disappear(pandaAwake1);
+                disappear(pandaAwake2);
+                show(pandaSleeping2);
+                disappear(pandaSleeping1);
+            }else{
+                disappear(pandaSleeping1);
+                disappear(pandaSleeping2);
+                show(pandaAwake2);
+                disappear(pandaAwake1);
+                }
         }
 
-        
-        
+    }
 
-        if (timeStudy == 0){
-        if (studySession <= 3){
-        if (studyOrBreak === 'study'){
-            console.log('hey this works study or break');
-           timeStudy = timeBreak; 
-           studyBreakSwitch();
-           return null;
-        }else {
-            studySession = studySession+ 1;
-            timeStudy = ogTime;
-            studyBreakSwitch();
+        if (timeStudy == -1){
             
-            return null;
-        }} else {
-            studySession = 0;
-            clear(timeInterval);
-            timer.innerHTML = 'DONE!';
+            if (studySession < 3){
+                console.log(studySession);
+                if (studyOrBreak === 'study'){
+                    timeStudy = timeBreak; 
+                    timerRing.play();
+                    studyBreakSwitch();
+                    return null;
+                }else {
+                    studySession = studySession+ 1;
+                    timeStudy = ogTime;
+                    timerRing.play();
+                    studyBreakSwitch();
+
+                    if (studySession == 2){
+                        bottomLight1.classList.remove('study-light');
+                        bottomLight1.classList.add('break-light');
+                    } else if (studySession == 3){
+                        bottomLight2.classList.remove('study-light');
+                        bottomLight2.classList.add('break-light');
+                    }
+
+                    
+                    return null;
+            }} else {
+                bottomLight3.classList.remove('study-light');
+                bottomLight3.classList.add('break-light');
+                timerDisplay.innerHTML = 'Done!';
+                studySession = 0;
+                clearInterval(timeInterval);
+                working = false;
         }}
 
 
@@ -180,7 +190,7 @@ subButton.addEventListener('click', () => {
 });
 startButton.addEventListener('click',() => {
 
-    let ogTime = timeStudy;
+    ogTime = timeStudy;
     timeBreak = timeStudy * 0.2;
 
     studyBreakSwitch();
@@ -221,9 +231,12 @@ continueButton.addEventListener('click', () => {
 
 resetButton.addEventListener('click',() => {
     timeStudy = 0;
-    document.getElementById('timer').innerHTML = "00:00";
+    timerDisplay.innerHTML = "00:00";
     clearInterval(timeInterval);
 
+    bottomLight1.classList.add('study-light');
+    bottomLight2.classList.add('study-light');
+    bottomLight3.classList.add('study-light');
     show(addButton);
     show(subButton);
     show(startButton);

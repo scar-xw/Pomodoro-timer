@@ -31,7 +31,7 @@ body {
   height: 298px;
   justify-content: center;
   align-items: center;
-    border-radius: 20px;  
+  border-radius: 13px;  
   overflow: hidden;
   border: 3px solid #446E3F;
   box-sizing: border-box;
@@ -45,9 +45,10 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  opacity: 0.83;
+  opacity: 0.90;
   z-index: -1;
 }
+
 
 #timer-area{
   display:flex;
@@ -55,8 +56,10 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 1px;
   z-index: 1;
+  margin-bottom: 4px;
+
 }
 
 #timer-and-background{
@@ -69,6 +72,7 @@ body {
   background-size: contain;
   width: 150px;
   height: 50px;
+ 
 }
 
 #lessTimeButton{
@@ -89,15 +93,17 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  
 }
 
 #barButtons{
   display: flex;
   flex-direction: row;
   justify-content: end;
-  margin-top: 8px;
+  margin-top: 10px;
   margin-left: 8px;
+  margin-right: 5px;
 }
 
 #closeButtonWindow{
@@ -110,6 +116,8 @@ body {
   align-items: flex-end;
   justify-self: center;
   height: 128px;
+  margin-bottom: 10px;
+  margin-right:10px;
 
 }
 
@@ -119,19 +127,19 @@ img[role="button"]:hover{
 }
 
 .timer-font  {
-  margin-top:5px;
+  margin-top: 35px;
   font-family: 'Ithaca', monospace;
   font-size:xxx-large;
-  color:#074513;
+  color:#264b3e;
 
 } 
 
 #study-break-tag{
   position:relative;
-  margin-right: 50px;
+  margin-right: 45px;
   font-family: 'Ithaca';
   font-size: 1.5rem;
-  height: 25px;
+  height: 13px;
   border: 2px solid #446E3F ;
   display: flex;
   align-items: center;  
@@ -146,7 +154,9 @@ img[role="button"]:hover{
     margin: 0;
     line-height: 1;
     font-family: 'Ithaca';
-    font-size: 1.5rem;}
+    font-size: 1.5rem;
+    color: #0eec9f;
+  }
 
 .break-light {
     width: 6px;
@@ -161,8 +171,27 @@ img[role="button"]:hover{
     height: 6px;
     border-radius: 50%;
     animation: pulseGlow 1.5s infinite;
-    background-color: #dd0f0f;
+    background-color: #c5484e;
 }
+
+.study-session-tag{
+  position:relative;
+  height: 5px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #446E3F ;
+  display: flex;
+  align-items: center;  
+  gap: 5px;
+  background-color: #c6dbc1;
+  padding:3px;
+  margin-left:57px;
+  border-radius: 20px;
+}
+
+
 
 
 

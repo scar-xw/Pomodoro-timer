@@ -9,7 +9,9 @@ const createWindow = () => {
       maximizable: false,
       fullscreenable: false,
       frame: false, 
-      transparent: false,
+      transparent: true,
+      backgroundColor: '#00000000',
+      alwaysOnTop: true,
       webPreferences: {
         preload: path.join(__dirname, 'preload.js'),
         contextIsolation: true,
@@ -28,6 +30,10 @@ app.whenReady().then(() => {
       createWindow()
     }
   })
+})
+
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') app.quit()
 })
 
 ipcMain.on('close-window', () => {
