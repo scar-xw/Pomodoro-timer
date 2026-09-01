@@ -4,16 +4,6 @@ A cute, lightweight desktop Pomodoro timer built with **Electron**, designed to 
 
 <img width="880" height="428" alt="image" src="https://github.com/user-attachments/assets/24cd8136-691e-4af3-b866-6382f86bbfa3" />
 
-
-##  Project assets
-<img width="948" height="426" alt="image" src="https://github.com/user-attachments/assets/77514d06-7d46-48f0-ad0d-80665694c6d7" />
-
-
-
-
-
-
-
 ##  Features
 
 * **Adorable Pixel Aesthetics:** Custom pixel art UI featuring a sleeping panda when the timer is running.
