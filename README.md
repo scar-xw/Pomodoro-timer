@@ -2,17 +2,7 @@
 
 A cute, lightweight desktop Pomodoro timer built with **Electron**, designed to boost your productivity and keep you focused while studying or working alongside an adorable pixel-art panda companion!
 
-<img width="1802" height="1056" alt="image" src="https://github.com/user-attachments/assets/49f1bfb6-39f5-459d-bcf2-9cff32684a47" />
-
-
-##  Project assets
-<img width="948" height="426" alt="image" src="https://github.com/user-attachments/assets/77514d06-7d46-48f0-ad0d-80665694c6d7" />
-
-
-
-
-
-
+<img width="880" height="428" alt="image" src="https://github.com/user-attachments/assets/24cd8136-691e-4af3-b866-6382f86bbfa3" />
 
 ##  Features
 
