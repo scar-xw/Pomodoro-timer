@@ -108,15 +108,15 @@ function timer() {
 }   
 
 function subtract(time) {     
-    if (time >= 10) {         
-        time -= 10;     
+    if (time >= 300) {         
+        time -= 300;     
     }     
     return time; 
 }   
 
 function add(time) {     
     if (time < 3600) {         
-        time += 10;     
+        time += 300;     
     }        
     return time; 
 }   
@@ -141,7 +141,6 @@ function studyBreakSwitch() {
     } 
 }   
 
-// Initial UI Setup
 disappear(stopButton); 
 disappear(resetButton); 
 disappear(continueButton); 
