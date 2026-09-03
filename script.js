@@ -6,6 +6,12 @@ const addButton = document.getElementById('moreTimeButton');
 const subButton = document.getElementById('lessTimeButton');
 
 const timerRing = new Audio("assets/alarmClockSound.mp3");
+const lofiBg = new Audio("assets/lofi-beat.mp3");
+lofiBg.loop = true;
+lofiBg.volume = 0.02;
+
+const buttonSound = new Audio("assets/quick-button.m4a");
+buttonSound.volume = 0.1;
 
 const pandaSleeping1 = document.getElementById('pandaSleeping1');
 const pandaSleeping2 = document.getElementById('pandaSleeping2');
@@ -27,6 +33,7 @@ let timeStudy = 0;
 let timeBreak = 0;
 let ogTime = timeStudy;
 let working = false;   
+
 
 function showTime(timeInSeconds) {     
     var seconds = Math.max(0, timeInSeconds % 60);     
@@ -148,7 +155,9 @@ disappear(pandaSleeping1);
 disappear(pandaSleeping2); 
 disappear(pandaAwake2);  
 
-addButton.addEventListener('click', () => {     
+addButton.addEventListener('click', () => {   
+    buttonSound.play();  
+    
     if (!working) {
         timeStudy = add(timeStudy);     
         showTime(timeStudy);  
@@ -156,13 +165,18 @@ addButton.addEventListener('click', () => {
 }); 
 
 subButton.addEventListener('click', () => {     
+    buttonSound.play();  
     if (!working) {
         timeStudy = subtract(timeStudy);     
         showTime(timeStudy); 
     }
 }); 
 
-startButton.addEventListener('click', () => {     
+startButton.addEventListener('click', () => {   
+    buttonSound.play();    
+    lofiBg.play();
+    
+
     if (timeStudy <= 0) return;
 
     ogTime = timeStudy;     
@@ -185,7 +199,9 @@ startButton.addEventListener('click', () => {
     timeInterval = setInterval(timer, 1000);  
 });   
 
-stopButton.addEventListener('click', () => {     
+stopButton.addEventListener('click', () => {  
+    buttonSound.play();     
+    lofiBg.pause();
     working = false;     
     clearInterval(timeInterval);     
     
@@ -193,7 +209,8 @@ stopButton.addEventListener('click', () => {
     show(continueButton);
 });   
 
-continueButton.addEventListener('click', () => {     
+continueButton.addEventListener('click', () => {    
+    buttonSound.play(); 
     if (!working) {     
         working = true;
         disappear(continueButton);
@@ -204,7 +221,9 @@ continueButton.addEventListener('click', () => {
     }  
 });   
 
-resetButton.addEventListener('click', () => {     
+resetButton.addEventListener('click', () => {    
+    lofiBg.pause();
+    buttonSound.play(); 
     working = false;     
     clearInterval(timeInterval);     
 
