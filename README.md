@@ -34,7 +34,7 @@ You need **Node.js** and **npm** installed on your system.
 
 
 
-### 📦 Installation
+###  Installation
 
 1. **Clone the repository:**
    ```bash
@@ -70,7 +70,7 @@ You need **Node.js** and **npm** installed on your system.
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 ```text
 ├── assets/
